@@ -3,18 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Mail\DemoEmail;
+use App\Mail\Mailer;
 use Illuminate\Support\Facades\Mail;
 
 class MailController extends Controller
 {
-    public function send() {
-        $objDemo = new \stdClass();
-        $objDemo->demo_one = 'Demo One Value';
-        $objDemo->demo_two = 'Demo Two Value';
-        $objDemo->sender = 'ZhumekinRakhat';
-        $objDemo->receiver = 'ZhumekinRakhat';
+    public function index() {
+        return view('mail.mail_view');
+    }
+    public function send(Request $request) {
+        $data = new \stdClass();
+        $data->sender = $request->sender;
+        $data->message = $request->message;
 
-        Mail::to("190103441@stu.sdu.edu.kz")->send(new DemoEmail($objDemo));
+        Mail::to('nasway2k@gmail.com')->send(new Mailer($data));
+        return back();   
     }
 }

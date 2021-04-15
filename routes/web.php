@@ -37,4 +37,6 @@ Route::get('/students/create', function() {
 });
 
 Route::post('/students/create', [StudentController::class, 'store'])-> name('add-student');
-Route::get('mail/send', [MailController::class, 'send']);
+
+Route::get('/mail/send', [MailController::class, 'index']) -> name('send-mail');
+Route::post('/mail/send', [MailController::class, 'send']) -> name('send_mail');

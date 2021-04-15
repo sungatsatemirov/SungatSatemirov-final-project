@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class DemoEmail extends Mailable
+class Mailer extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -30,13 +30,8 @@ class DemoEmail extends Mailable
      */
     public function build()
     {
-        return $this->from('190103441@stu.sdu.edu.kz')
-                    ->view('mails.demo')
-                    ->text('mails.demo_plain')
-                    ->with(
-                        [
-                            'testVarOne' => '1',
-                            'testVarTwo' => '2'
-                        ]);
+        return $this->from('nasway2k@gmail.com')->subject('Mail from Project')
+            ->view('mail.demo')
+            ->text('mail.demo_plain')->with('data', $this->demo);;
     }
 }
