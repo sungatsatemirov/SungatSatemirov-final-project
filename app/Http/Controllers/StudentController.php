@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App;
 use Illuminate\Http\Request;
  
 use App\Models\Student ;
@@ -12,8 +12,11 @@ use Illuminate\Support\Facades\Session;
 class StudentController extends Controller
 {
     //
-    public function index() {
+    
+    public function index($lang) {
+
         $students = Student::all();
+        App::setlocale($lang);
 
         return view('students.student_view')->with(['students' => $students]);
     }

@@ -8,8 +8,9 @@
   
 </head>
 <body>
+<h1>@lang('lang.add') @lang('lang.student')</h1>
 <div class="container">
-<form id = "form" method="POST" action="{{ route('add-student')}}" enctype="multipart/form-data">
+<form id = "form" method="POST" action="{{ route('add-student' , ['lang' => App::getLocale()]) }}" enctype="multipart/form-data">
         @csrf 
         <input type="text" name="name" placeholder="name">
         <input type="number" name="faculty_id" placeholder="faculty_id">

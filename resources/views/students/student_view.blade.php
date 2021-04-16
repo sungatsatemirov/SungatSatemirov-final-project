@@ -10,13 +10,14 @@
     <div class="container">
     
 
-    <div class="our-team">
+    <div class="card">
       <div class="picture">
         <img class="img-fluid" src="{{$student->photo}}">
       </div>
       <div class="team-content">
-        <h3 class="name">{{$student->name}}</h3>
-        <h4 class="title">{{$student->get_results($student->faculty_id)}}</h4>
+        <h2 class="name">@lang('lang.name'): {{$student->name}}</h2>
+        <h4?>@lang('lang.age'): {{$student->age}}</h4>
+        <h4 class="title">@lang('lang.faculty'): {{$student->get_results($student->faculty_id)}}</h4>
   
       
  

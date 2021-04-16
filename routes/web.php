@@ -19,24 +19,27 @@ use App\Http\Controllers\MailController;
 |
 */
 
-Route::get('/', function () {
+Route::get('/{lang}', function ($lang) {
+    App::setlocale($lang);
     return view('main');
 });
 
-Route::get('/students' , [StudentController::class , 'index']);
-Route::get('/faculty' ,[FacultyController::class , 'index']);
+Route::get('/students/{lang}' , [StudentController::class , 'index'])->name('students');
+Route::get('/faculty/{lang}' ,[FacultyController::class , 'index'])->name('faculties');
 
-Route::get('/faculty/create', function() {
+Route::get('/faculty/create/{lang}', function($lang) {
+    App::setlocale($lang);
     return view('faculty.create');
 });
 
-Route::post('/faculty/create', [FacultyController::class, 'store'])-> name('add-faculty');
+Route::post('/faculty/create/{lang}', [FacultyController::class, 'store'])-> name('add-faculty');
 
-Route::get('/students/create', function() {
+Route::get('/students/create/{lang}', function($lang) {
+    App::setlocale($lang);
     return view('students.create_student');
 });
 
-Route::post('/students/create', [StudentController::class, 'store'])-> name('add-student');
+Route::post('/students/create/{lang}', [StudentController::class, 'store'])-> name('add-student');
 
-Route::get('/mail/send', [MailController::class, 'index']) -> name('send-mail');
-Route::post('/mail/send', [MailController::class, 'send']) -> name('send_mail');
+Route::get('/mail/send/', [MailController::class, 'index']) -> name('send-mail');
+Route::post('/mail/send/', [MailController::class, 'send']) -> name('send_mail');

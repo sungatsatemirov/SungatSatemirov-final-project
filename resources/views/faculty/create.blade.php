@@ -9,7 +9,7 @@
 </head>
 <body>
 <div class="container">
-<form id = "form" method="POST" action="{{ route('add-faculty')}}" enctype="multipart/form-data">
+<form id = "form" method="POST" action="{{ route('add-faculty' , ['lang' => App::getLocale()])}}" enctype="multipart/form-data">
         @csrf 
         <input type="text" name="name" placeholder="name of faculty">
 

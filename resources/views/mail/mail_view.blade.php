@@ -4,13 +4,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ asset('email.css') }}">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Send Email</title>
+    <title>@lang('lang.send_me')</title>
 </head>
 <body>
     
-
-    <h1>Send me a mail!</h1>
-    <form method="POST" action="{{ route('send_mail')}}">
+ 
+    <h1>@lang('lang.send') @lang('lang.mail')</h1>
+    <form method="POST" action="{{ route('send_mail' , ['lang' => App::getLocale()])}}">
         @csrf
         <input type="text" name="sender" placeholder="sender">
         <input type="text" name="message" placeholder="message">
